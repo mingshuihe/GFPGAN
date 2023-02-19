@@ -137,3 +137,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/gfpgan/weights/detection_Resnet50_Final.pth
+/gfpgan/weights/GFPGANv1.3.pth
+/gfpgan/weights/GFPGANv1.4.pth
+/gfpgan/weights/parsing_parsenet.pth
+/gfpgan/weights/RealESRGAN_x2plus.pth
+/gfpgan/weights/RestoreFormer.pth
