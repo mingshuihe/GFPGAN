@@ -1,0 +1,36 @@
+参考视频 https://www.bilibili.com/video/BV1ov41137Z8/?p=3&spm_id_from=pageDriver&vd_source=a2f9eb57b0393f2684cf661d3bb53132
+安装conda的时候要勾选添加环境变量
+安装完之后打开cmd窗口
+查看conda版本: conda -V
+激活默认base环境: activate
+创建一个新环境py37并指定python版本为3.7: conda create -n py37 python=python3.7
+激活并切换到py37: conda activate py37
+查看环境列表,活跃的环境前面会有一个星号: conda env list
+退出python解释器:exit()
+去激活当前环境: conda deactivate
+
+
+安装conda之前英伟达软件有2个
+NVIDIA PhysX系统软件
+NVIDIA图形驱动程序
+查看cuda版本:nvcc -V
+
+# 可以参考以下配置，这里的127.0.0.1代表的就是你本机的IP地址，因为服务就在你本机上运行
+git config --global https.proxy http://127.0.0.1:10809
+git config --global https.proxy http://127.0.0.1:10809
+git config --global http.proxy 'socks5://127.0.0.1:10808'
+git config --global https.proxy 'socks5://127.0.0.1:10808'
+查看配置
+git config --list
+取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+import torch
+torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+pip install -i https://mirrors.aliyun.com/pypi/simple/tqdm
+pip install matplotlib
+pip install opencv-python
+pip install fastapi
+pip install uvicorn
