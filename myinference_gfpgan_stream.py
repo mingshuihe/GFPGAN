@@ -7,6 +7,7 @@ from gfpgan import GFPGANer
 from fastapi import FastAPI, UploadFile, Request
 import uvicorn
 from basicsr.archs.rrdbnet_arch import RRDBNet
+from basicsr.utils import imwrite
 from realesrgan import RealESRGANer
 import io
 from starlette.responses import StreamingResponse
@@ -79,10 +80,13 @@ def main(input_img):
         weight=args.weight)
 
     is_ok,encoded_img = cv2.imencode('.PNG', restored_img)
+    # 保存到文件夹
+    imwrite(restored_img, 'results\\a.jpg')
     return StreamingResponse(io.BytesIO(encoded_img.tobytes()), media_type="image/png")
 
 @app.post("/post")
 async def getApi(uploaded_file: UploadFile):
+
     contents = await uploaded_file.read()
     img = cv2.imdecode(numpy.fromstring(contents, numpy.uint8), cv2.IMREAD_UNCHANGED)
     return main(img)
@@ -94,4 +98,4 @@ async def read_item(request: Request):
 
 if __name__ == '__main__':
     # uvicorn.run(app, port=8080)
-    uvicorn.run(app, port=8093, host='0.0.0.0')
+    uvicorn.run(app, port=80, host='0.0.0.0')
